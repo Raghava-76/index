@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIS Ledger</title>
+    <style>
+        .fixTableHead {
+          overflow-y: auto;
+          height: 200px;
+        }
+        .fixTableHead thead th {
+          position: sticky;
+          top: 0;
+        }
+        table {
+          border-collapse: collapse;        
+          width: 100%;
+        }
+        th,
+        td {
+          padding: 8px 15px;
+          border: 2px solid #599432;
+        }
+        th {
+          background: #ABDD93;
+        }
+      </style>
+</head>
+<body>
+    <marquee behavior="scroll" direction="right" scrollamount="3">This screen is developed for prototype purpose only <a href="https://qa.instant-transport.com/#/instant/mis-report/delete-report"> <img src="data:image/png;base64,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" Width="200px" class= "text center" alt="This screen is for design of Cash and Fuel ledger"> </a></marquee> 
+
+    <div class="fixTableHead">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Particulars</th>
+              <th>CB Folio</th>
+              <th>Debit A/C</th>
+              <th>Credit A/C</th>
+              <th>Dr./Cr.</th>
+              <th>Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>20th Jan 2022</td>
+              <td>Fuel transfered to Vehicle HR01AF3332</td>
+              <td>1.2</td>
+              <td>Instant A/C</td>
+              <td>Fuel Budget A/C</td>
+              <td>Cr.</td>
+              <td>(2500)</td>
+            </tr>
+            <tr>
+                <td>19th Jan 2022</td>
+                <td>Fuel transfered to Vehicle HR01AF3332</td>
+                <td>1.8</td>
+                <td>Instant A/C</td>
+                <td>Fuel Budget A/C</td>
+                <td>Cr.</td>
+                <td>2500</td>
+            </tr>
+            <tr>
+                <td>18th Jan 2022</td>
+                <td>Fuel transfered to Vehicle HR01AF3332</td>
+                <td>1.7</td>
+                <td>Instant A/C</td>
+                <td>Fuel Budget A/C</td>
+                <td>Cr.</td>
+                <td>(500)</td>
+            </tr>
+            <tr>
+                <td>16th Jan 2022</td>
+                <td>Fuel transfered to Vehicle HR01AF3332</td>
+                <td>3.1</td>
+                <td>Instant A/C</td>
+                <td>Fuel Budget A/C</td>
+                <td>Cr.</td>
+                <td>250</td>
+            </tr>
+            <tr>
+                <td>12th Jan 2022</td>
+                <td>Fuel transfered to Vehicle HR01AF3332</td>
+                <td>1.9</td>
+                <td>Instant A/C</td>
+                <td>Fuel Budget A/C</td>
+                <td>Cr.</td>
+                <td>(4500)</td>
+            </tr>
+          </tbody>
+          
+          <tfoot>
+              <tr>
+                  <td>-</td>
+                  <td>tranfer A/C</td>
+                  <td>-</td>
+                  <td>Instant Dev Ledger</td>
+                  <td>A/C</td>
+                  <td>Cr./Dr</td>
+                  <td>(4750)</td>
+
+              </tr>
+          </tfoot>
+        </table>
+    </div>
+</body>
+</html>
